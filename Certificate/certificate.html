@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filterable responsive lightbox gallery tutorial</title>
+
+    <!-- magnific-popup css cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="certificate_style.css">
+
+</head>
+<body>
+
+
+<div class="gallery">
+
+    <ul class="controls">
+        <li class="buttons active" data-filter="all">All</li>
+        <li class="buttons" data-filter="ice-cream">Coursera: Cybersecurity</li>
+        <li class="buttons" data-filter="chocolate">MathWorks</li>
+        <li class="buttons" data-filter="cake">Coursera: Google Data Analytics</li>
+    </ul>
+
+    <div class="image-container">
+
+        <a href="Cybersecurity - Module 1.png" class="image ice-cream">
+            <img src="Cybersecurity - Module 1.png" alt="">
+        </a>
+        <a href="Cybersecurity - Module 2.png" class="image ice-cream">
+            <img src="Cybersecurity - Module 2.png" alt="">
+        </a>
+        <a href="Cybersecurity - Module 3.png" class="image ice-cream">
+            <img src="Cybersecurity - Module 3.png" alt="">
+        </a>
+        <a href="Cybersecurity - Module 4.png" class="image ice-cream">
+            <img src="Cybersecurity - Module 4.png" alt="">
+        </a>
+
+
+        <a href="MATLAB Onramp.png" class="image chocolate">
+            <img src="MATLAB Onramp.png" alt="">
+        </a>
+        <a href="MATLAB Simulink.png" class="image chocolate">
+            <img src="MATLAB Simulink.png" alt="">
+        </a>
+
+        <a href="Module 1 - Introduction.png" class="image cake">
+            <img src="Module 1 - Introduction.png" alt="">
+        </a>
+        <a href="Module 2 - Ask Questions.png" class="image cake">
+            <img src="Module 2 - Ask Questions.png" alt="">
+        </a>
+        <a href="Module 3 - Prepare Data.png" class="image cake">
+            <img src="Module 3 - Prepare Data.png" alt="">
+        </a>
+        <a href="Module 4 - Clean Data.png" class="image cake">
+            <img src="Module 4 - Clean Data.png" alt="">
+        </a>
+        <a href="Module 5 - Analyze Data.png" class="image cake">
+            <img src="Module 5 - Analyze Data.png" alt="">
+        </a>
+
+    </div>
+</div>
+
+
+<!-- jquery cdn link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- magnific popup js cdn link  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+    $('.buttons').click(function(){
+
+        $(this).addClass('active').siblings().removeClass('active');
+
+        var filter = $(this).attr('data-filter')
+
+        if(filter == 'all'){
+            $('.image').show(400);
+        }else{
+            $('.image').not('.'+filter).hide(200);
+            $('.image').filter('.'+filter).show(400);
+        }
+
+    });
+
+    $('.gallery').magnificPopup({
+
+        delegate:'a',
+        type:'image',
+        gallery:{
+            enabled:true
+        }
+
+    });
+
+});
+
+</script>
+    
+</body>
+</html>
